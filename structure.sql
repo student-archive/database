@@ -50,9 +50,8 @@ create table if not exists "user"
 
 create table "subject"
 (
-    id      uuid primary key default gen_random_uuid(),
-    groupId uuid not null references "group",
+    id          uuid primary key default gen_random_uuid(),
+    groupId     uuid not null references "group",
     subjectName text not null,
-    semester int not null
+    semester    int  not null
 );
-
