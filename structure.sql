@@ -1,4 +1,4 @@
-create table "account"
+create table if not exists "account"
 (
     id             uuid primary key default gen_random_uuid(),
     email          text      not null
@@ -9,7 +9,7 @@ create table "account"
     lastActiveDate timestamp null
 );
 
-create table "inviteCode"
+create table if not exists "inviteCode"
 (
     id            uuid primary key   default gen_random_uuid(),
     accountId     uuid      null references account,
@@ -18,7 +18,7 @@ create table "inviteCode"
     activatedDate timestamp null
 );
 
-create table "speciality"
+create table if not exists "speciality"
 (
     id             uuid primary key default gen_random_uuid(),
     specialityName text not null
