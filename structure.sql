@@ -1,4 +1,4 @@
-create table account (
+create table "account" (
   id uuid primary key default gen_random_uuid(),
   email text not null
     constraint email_pattern
@@ -8,7 +8,7 @@ create table account (
   lastActiveDate timestamp null
 );
 
-create table inviteCode (
+create table "inviteCode" (
   id uuid primary key default gen_random_uuid(),
   accountId uuid null references account,
   inviteCode text not null,
