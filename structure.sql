@@ -73,3 +73,10 @@ create table "tutor"
             check ( link ~
                     'https?://(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_+.~#?&\\/=]*)' )
 );
+
+create table if not exists "subject_tutor"
+(
+    subjectId uuid references "subject" on update cascade on delete cascade,
+    tutorId uuid references "tutor" on update cascade on delete cascade,
+    constraint subject_tutor_pkey primary key (subjectId, tutorId)
+);
