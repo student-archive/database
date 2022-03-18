@@ -77,6 +77,6 @@ create table if not exists "tutor"
 create table if not exists "subject_tutor"
 (
     subjectId uuid references "subject" on update cascade on delete set null,
-    tutorId uuid references "tutor" on update cascade on delete set null,
+    tutorId   uuid references "tutor" on update cascade on delete set null,
     constraint subject_tutor_pkey primary key (subjectId, tutorId)
 );
