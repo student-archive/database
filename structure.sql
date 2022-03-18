@@ -29,4 +29,11 @@ create table if not exists "group"
     id           uuid primary key default gen_random_uuid(),
     specialityId uuid not null references "speciality",
     groupName    text not null
-)
+);
+
+create table if not exists "role"
+(
+    id              uuid primary key default gen_random_uuid(),
+    roleName        text not null,
+    roleDescription text not null
+);
