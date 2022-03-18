@@ -48,7 +48,7 @@ create table if not exists "user"
     lastNae   text not null
 );
 
-create table "subject"
+create table if not exists "subject"
 (
     id          uuid primary key default gen_random_uuid(),
     groupId     uuid not null references "group",
@@ -56,7 +56,7 @@ create table "subject"
     semester    int  not null
 );
 
-create table "tutor"
+create table if not exists "tutor"
 (
     id         uuid primary key default gen_random_uuid(),
     firstName  text not null,
