@@ -71,7 +71,7 @@ create table if not exists "tutor"
     "link"       text null
         constraint link_pattern
             check ( link ~
-                    'https?://(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_+.~#?&\\/=]*)' )
+                    '^https?://(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_+.~#?&\\/=]*)$' )
 );
 
 create table if not exists "subject_tutor"
