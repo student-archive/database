@@ -37,3 +37,13 @@ create table if not exists "role"
     roleName        text not null,
     roleDescription text not null
 );
+
+create table if not exists "user"
+(
+    id        uuid primary key default gen_random_uuid(),
+    groupId   uuid null references "group",
+    accountId uuid not null references "account",
+    roleId    uuid not null references "role",
+    firstName text not null,
+    lastNae   text not null
+);
