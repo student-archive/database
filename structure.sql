@@ -17,3 +17,9 @@ create table "inviteCode"
     isValid       bool      not null default true,
     activatedDate timestamp null
 );
+
+create table "speciality"
+(
+    id             uuid primary key default gen_random_uuid(),
+    specialityName text not null
+);
