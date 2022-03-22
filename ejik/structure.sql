@@ -11,8 +11,8 @@ create table if not exists "employee"
     "firstName"    text not null,
     "lastName"     text not null,
     "patronymic"   text not null,
-    "position"     text not null,
-    "email"        text not null
+    "position"     text  null,
+    "email"        text  null
         constraint email_pattern
             check (email ~ '^[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+$')
         unique,
