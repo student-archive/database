@@ -31,3 +31,12 @@ create table if not exists "speciality_employee"
     "employeeId"   uuid references "employee" on update cascade on delete set null,
     constraint speciality_employee_pkey primary key ("specialityId", "employeeId")
 );
+
+create table if not exists "certificate"
+(
+    "employeeId"             uuid not null references "employee",
+    "certificateName"        text not null,
+    "certificateDescription" text not null,
+    "office"                 text not null
+);
+
