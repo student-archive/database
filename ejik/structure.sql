@@ -64,4 +64,15 @@ create table if not exists "attachmentType"
 (
     "id"       uuid primary key default gen_random_uuid(),
     "typeName" text not null
-)
+);
+
+create table if not exists "attachment"
+(
+     "id"           uuid primary key default gen_random_uuid(),
+    "tupeId" uuid not null references "attachmentType",
+    "link"         text null
+        constraint link_pattern
+            check ( link ~
+                    '^https?://(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_+.~#?&\\/=]*)$' )
+
+);
