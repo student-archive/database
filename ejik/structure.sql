@@ -34,9 +34,28 @@ create table if not exists "speciality_employee"
 
 create table if not exists "certificate"
 (
+    "id"                     uuid primary key default gen_random_uuid(),
     "employeeId"             uuid not null references "employee",
     "certificateName"        text not null,
     "certificateDescription" text not null,
     "office"                 text not null
 );
 
+create table if not exists "employee_certificate"
+(
+    "employeeId"    uuid references "employee" on update cascade on delete set null,
+    "certificateId" uuid references "certificate" on update cascade on delete set null
+
+);
+
+create table if not exists "software"
+(
+    "id"        uuid primary key default gen_random_uuid(),
+    "link"      text null
+        constraint link_pattern
+            check ( link ~
+                    '^https?://(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_+.~#?&\\/=]*)$' ),
+    "subjectId" uuid not null references "subject"
+
+
+);
