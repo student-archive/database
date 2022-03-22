@@ -24,3 +24,10 @@ create table if not exists "employee"
             check ( link ~
                     '^https?://(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_+.~#?&\\/=]*)$' )
 );
+
+create table if not exists "speciality_employee"
+(
+    "specialityId" uuid references "speciality" on update cascade on delete set null,
+    "employeeId"   uuid references "employee" on update cascade on delete set null,
+    constraint speciality_employee_pkey primary key ("specialityId", "employeeId")
+);
