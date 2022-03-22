@@ -14,4 +14,11 @@ create table if not exists "eventPriority"
     "priorityName"        text not null,
     "priorityDescription" text not null
 );
+create table if not exists "trash"
+(
+    "id"          uuid primary key default gen_random_uuid(),
+    "groupId"     uuid      not null references "group",
+    "deletedId"   uuid      not null,
+    "deletedDate" timestamp not null
+);
 
