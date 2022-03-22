@@ -45,3 +45,11 @@ create table if not exists "quizVariant"
     "isCorrect"       boolean not null
 );
 
+create table if not exists "quizResult"
+(
+    "id"     uuid primary key default gen_random_uuid(),
+    "quizId" uuid not null references "quiz",
+    "userId" uuid not null references "user",
+    "result" int  not null
+)
+
