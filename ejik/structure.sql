@@ -59,3 +59,9 @@ create table if not exists "software"
 
 
 );
+
+create table if not exists "attachment_type"
+(
+    "id"       uuid primary key default gen_random_uuid(),
+    "typeName" text not null
+)
