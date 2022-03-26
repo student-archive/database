@@ -9,7 +9,7 @@ create table if not exists "employee"
     "id"           uuid primary key default gen_random_uuid(),
     "firstName"    text not null,
     "lastName"     text not null,
-    "patronymic"   text not null,
+    "patronymic"   text null,
     "position"     text  null,
     "email"        text  null
         constraint email_pattern
