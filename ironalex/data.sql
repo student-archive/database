@@ -117,29 +117,75 @@ VALUES ('aa391ea4-7076-4812-8aac-c4fc82da63d2', 'Экземпляр класса
        ('aa391ea4-7076-4812-8aac-c4fc82da63d2', 'любовь', false),
        ('aa391ea4-7076-4812-8aac-c4fc82da63d2', '42', true);
 insert into "user" ("groupId", "accountId", "roleId", "firstName", "lastName")
-values ('955391a5-5988-4ab4-9284-fcd7938f8525', '70431080-6734-49f3-8ac3-b536c506aefe',
-        'e3c68900-cc4a-4456-890e-339a534aa9d9', 'Иван', 'Петров'),
-       ('955391a5-5988-4ab4-9284-fcd7938f8525', '70431080-6734-49f3-8ac3-b536c506aefe',
-        'e3c68900-cc4a-4456-890e-339a534aa9d9', 'Иван', 'Петров'),
-       ('955391a5-5988-4ab4-9284-fcd7938f8525', '70431080-6734-49f3-8ac3-b536c506aefe',
-        'e3c68900-cc4a-4456-890e-339a534aa9d9', 'Иван', 'Петров'),
-       ('955391a5-5988-4ab4-9284-fcd7938f8525', '70431080-6734-49f3-8ac3-b536c506aefe',
-        'e3c68900-cc4a-4456-890e-339a534aa9d9', 'Иван', 'Петров'),
-       ('955391a5-5988-4ab4-9284-fcd7938f8525', '70431080-6734-49f3-8ac3-b536c506aefe',
-        'e3c68900-cc4a-4456-890e-339a534aa9d9', 'Иван', 'Петров'),
-       ('955391a5-5988-4ab4-9284-fcd7938f8525', '70431080-6734-49f3-8ac3-b536c506aefe',
-        'e3c68900-cc4a-4456-890e-339a534aa9d9', 'Иван', 'Петров'),
-       ('955391a5-5988-4ab4-9284-fcd7938f8525', '70431080-6734-49f3-8ac3-b536c506aefe',
-        'e3c68900-cc4a-4456-890e-339a534aa9d9', 'Иван', 'Петров'),
-       ('955391a5-5988-4ab4-9284-fcd7938f8525', '70431080-6734-49f3-8ac3-b536c506aefe',
-        'e3c68900-cc4a-4456-890e-339a534aa9d9', 'Иван', 'Петров'),
-       ('955391a5-5988-4ab4-9284-fcd7938f8525', '70431080-6734-49f3-8ac3-b536c506aefe',
-        'e3c68900-cc4a-4456-890e-339a534aa9d9', 'Иван', 'Петров'),
-       ('955391a5-5988-4ab4-9284-fcd7938f8525', '70431080-6734-49f3-8ac3-b536c506aefe',
-        'e3c68900-cc4a-4456-890e-339a534aa9d9', 'Иван', 'Петров');
+values ('955391a5-5988-4ab4-9284-fcd7938f8525', '5f1f1655-0198-44fd-9adc-7d1ed4ae2c99',
+        '1168bd3e-2706-488e-82d0-a086f6ee2e47', 'Иван', 'Петров'),
+       ('955391a5-5988-4ab4-9284-fcd7938f8525', '5f1f1655-0198-44fd-9adc-7d1ed4ae2c99',
+        '1168bd3e-2706-488e-82d0-a086f6ee2e47', 'Иван', 'Петров'),
+       ('955391a5-5988-4ab4-9284-fcd7938f8525', '5f1f1655-0198-44fd-9adc-7d1ed4ae2c99',
+        '1168bd3e-2706-488e-82d0-a086f6ee2e47', 'Иван', 'Петров'),
+       ('955391a5-5988-4ab4-9284-fcd7938f8525', '5f1f1655-0198-44fd-9adc-7d1ed4ae2c99',
+        '1168bd3e-2706-488e-82d0-a086f6ee2e47', 'Иван', 'Петров'),
+       ('955391a5-5988-4ab4-9284-fcd7938f8525', '5f1f1655-0198-44fd-9adc-7d1ed4ae2c99',
+        '1168bd3e-2706-488e-82d0-a086f6ee2e47', 'Иван', 'Петров'),
+       ('955391a5-5988-4ab4-9284-fcd7938f8525', '5f1f1655-0198-44fd-9adc-7d1ed4ae2c99',
+        '1168bd3e-2706-488e-82d0-a086f6ee2e47', 'Иван', 'Петров'),
+       ('955391a5-5988-4ab4-9284-fcd7938f8525', '5f1f1655-0198-44fd-9adc-7d1ed4ae2c99',
+        '1168bd3e-2706-488e-82d0-a086f6ee2e47', 'Иван', 'Петров'),
+       ('955391a5-5988-4ab4-9284-fcd7938f8525', '5f1f1655-0198-44fd-9adc-7d1ed4ae2c99',
+        '1168bd3e-2706-488e-82d0-a086f6ee2e47', 'Иван', 'Петров'),
+       ('955391a5-5988-4ab4-9284-fcd7938f8525', '5f1f1655-0198-44fd-9adc-7d1ed4ae2c99',
+        '1168bd3e-2706-488e-82d0-a086f6ee2e47', 'Иван', 'Петров'),
+       ('955391a5-5988-4ab4-9284-fcd7938f8525', '5f1f1655-0198-44fd-9adc-7d1ed4ae2c99',
+        '1168bd3e-2706-488e-82d0-a086f6ee2e47', 'Иван', 'Петров');
 
+insert into "account" ("email", "passwordHash")
+values ('dadyarri@gmail.com', 'zvtlclyfzayvunwhzzdvyk');
+insert into "account" ("email", "passwordHash")
+values ('email1@gmail.com', 'zvtlclyfzayvunwhzzdvyk');
+insert into "account" ("email", "passwordHash")
+values ('email2@gmail.com', 'zvtlclyfzayvunwhzzdvyk');
+insert into "account" ("email", "passwordHash")
+values ('email3@gmail.com', 'zvtlclyfzayvunwhzzdvyk');
+insert into "account" ("email", "passwordHash")
+values ('email4@gmail.com', 'zvtlclyfzayvunwhzzdvyk');
+insert into "account" ("email", "passwordHash")
+values ('email5@gmail.com', 'zvtlclyfzayvunwhzzdvyk');
+insert into "account" ("email", "passwordHash")
+values ('email6@gmail.com', 'zvtlclyfzayvunwhzzdvyk');
+insert into "account" ("email", "passwordHash")
+values ('email7@gmail.com', 'zvtlclyfzayvunwhzzdvyk');
+insert into "account" ("email", "passwordHash")
+values ('email8@gmail.com', 'zvtlclyfzayvunwhzzdvyk');
+insert into "account" ("email", "passwordHash")
+values ('email9@gmail.com', 'zvtlclyfzayvunwhzzdvyk');
 
+insert into "role" ("roleName", "roleDescription")
+values ('Студент', 'Чтение страниц'),
+       ('Редактор', 'Предложение изменений'),
+       ('Староста', 'Внесение изменений'),
+       ('Модератор', 'Глобальная поддержка');
 
+insert into "quizHistory" ("questionId", "selectedVariantId", "userId", "quizSubmitDate")
+VALUES ('aa391ea4-7076-4812-8aac-c4fc82da63d2', '723f1d3c-562b-4c78-9f39-645df6f17058',
+        'd5951d41-d487-441d-b579-b2cd1e837bad', CURRENT_TIMESTAMP),
+       ('aa391ea4-7076-4812-8aac-c4fc82da63d2', '9abe98eb-5089-49ae-8117-cccaaa9f4201',
+        'd5951d41-d487-441d-b579-b2cd1e837bad', CURRENT_TIMESTAMP),
+       ('aa391ea4-7076-4812-8aac-c4fc82da63d2', '8e045dff-79a4-411e-a808-598bcb64cf7d',
+        'd5951d41-d487-441d-b579-b2cd1e837bad', CURRENT_TIMESTAMP),
+       ('aa391ea4-7076-4812-8aac-c4fc82da63d2', 'b8a35801-b32d-4880-af45-82439a694f2a',
+        'd5951d41-d487-441d-b579-b2cd1e837bad', CURRENT_TIMESTAMP),
+       ('aa391ea4-7076-4812-8aac-c4fc82da63d2', 'c3c942d2-7f95-41a3-b906-81c802fa124b',
+        'd5951d41-d487-441d-b579-b2cd1e837bad', CURRENT_TIMESTAMP),
+       ('aa391ea4-7076-4812-8aac-c4fc82da63d2', 'dcfcd7fe-5f53-4839-8237-b8a3a2aadf6a',
+        'd5951d41-d487-441d-b579-b2cd1e837bad', CURRENT_TIMESTAMP),
+       ('aa391ea4-7076-4812-8aac-c4fc82da63d2', '63fb15a8-30a5-42f7-9158-cefdf81e2ead',
+        'd5951d41-d487-441d-b579-b2cd1e837bad', CURRENT_TIMESTAMP),
+       ('aa391ea4-7076-4812-8aac-c4fc82da63d2', 'e6485083-9080-43ef-871a-7e73da38c2da',
+        'd5951d41-d487-441d-b579-b2cd1e837bad', CURRENT_TIMESTAMP),
+       ('aa391ea4-7076-4812-8aac-c4fc82da63d2', 'e385a894-22b0-4d8c-bb68-ed25ca42e778',
+        'd5951d41-d487-441d-b579-b2cd1e837bad', CURRENT_TIMESTAMP),
+       ('aa391ea4-7076-4812-8aac-c4fc82da63d2', '37ccda4a-b7e8-49ec-92b2-e59796dc4392',
+        'd5951d41-d487-441d-b579-b2cd1e837bad', CURRENT_TIMESTAMP);
 
 
 
