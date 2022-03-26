@@ -19,9 +19,7 @@ create table if not exists "employee"
         constraint phone_pattern
             check ( phone ~ '^\+[1-9]\d{1,14}$' ),
     "link"       text null
-        constraint link_pattern
-            check ( link ~
-                    '^https?://(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_+.~#?&\\/=]*)$' )
+
 );
 
 create table if not exists "speciality_employee"
@@ -51,10 +49,7 @@ create table if not exists "software"
 (
     "id"        uuid primary key default gen_random_uuid(),
     "link"      text null
-        constraint link_pattern
-            check ( link ~
-                    '^https?://(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_+.~#?&\\/=]*)$' ),
-    "subjectId" uuid not null references "subject"
+
 
 
 );
@@ -70,9 +65,7 @@ create table if not exists "attachment"
     "id"     uuid primary key default gen_random_uuid(),
     "typeId" uuid not null references "attachmentType",
     "link"   text null
-        constraint link_pattern
-            check ( link ~
-                    '^https?://(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_+.~#?&\\/=]*)$' )
+
 
 );
 
@@ -80,9 +73,7 @@ create table if not exists "page"
 (
     "id"   uuid primary key default gen_random_uuid(),
     "link" text null
-        constraint link_pattern
-            check ( link ~
-                    '^https?://(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_+.~#?&\\/=]*)$' )
+
 
 );
 
