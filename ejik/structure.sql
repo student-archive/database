@@ -90,5 +90,5 @@ create table if not exists "page_attachment"
 (
     "pageId"       uuid references "page" on update cascade on delete set null,
     "attachmentId" uuid references "attachment" on update cascade on delete set null,
-    constraint subject_tutor_pkey primary key ("pageId", "attachmentId")
+    constraint page_attachment_pkey primary key ("pageId", "attachmentId")
 )
