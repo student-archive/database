@@ -79,10 +79,16 @@ create table if not exists "attachment"
 create table if not exists "page"
 (
     "id"           uuid primary key default gen_random_uuid(),
-    "attachmentId" uuid not null references "attachment",
     "link"         text null
         constraint link_pattern
             check ( link ~
                     '^https?://(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_+.~#?&\\/=]*)$' )
 
 );
+
+create table  if not exists  "page_attachment"
+(
+     "pageId" uuid references "page" on update cascade on delete set null,
+     "attachmentId"   uuid references "attachment" on update cascade on delete set null,
+    constraint subject_tutor_pkey primary key ("pageId", "attachmentId")
+)
