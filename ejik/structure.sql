@@ -68,7 +68,7 @@ create table if not exists "attachmentType"
 create table if not exists "attachment"
 (
     "id"     uuid primary key default gen_random_uuid(),
-    "tupeId" uuid not null references "attachmentType",
+    "typeId" uuid not null references "attachmentType",
     "link"   text null
         constraint link_pattern
             check ( link ~
