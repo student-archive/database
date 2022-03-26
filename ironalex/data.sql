@@ -1,13 +1,9 @@
 insert into "eventPriority" ("priorityName", "priorityDescription")
-values ('global', 'Общесистемные уведомления');
-insert into "eventPriority" ("priorityName", "priorityDescription")
-values ('low', 'Уведомление низкого приоритета');
-insert into "eventPriority" ("priorityName", "priorityDescription")
-values ('medium', 'Уведомление среднего приоритета');
-insert into "eventPriority" ("priorityName", "priorityDescription")
-values ('high', 'Уведомление высокого приоритета');
-insert into "eventPriority" ("priorityName", "priorityDescription")
-values ('haf', 'Уведомление самого высокого приоритета');
+values ('global', 'Общесистемные уведомления'),
+       ('low', 'Уведомление низкого приоритета'),
+       ('medium', 'Уведомление среднего приоритета'),
+       ('high', 'Уведомление высокого приоритета'),
+       ('haf', 'Уведомление самого высокого приоритета');
 
 insert into "event" ("eventPriorityId", "groupId", "eventText", "eventDate")
 values ((select "id" from "eventPriority" where "priorityName" = 'low' limit 1),
