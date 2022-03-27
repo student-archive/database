@@ -1,0 +1,1 @@
+alter table "attachment" add column "checksum" text ;
