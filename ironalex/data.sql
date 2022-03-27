@@ -138,5 +138,24 @@ values ((select "id" from quiz order by random() limit 1), (select "id" from "us
        ((select "id" from quiz order by random() limit 1), (select "id" from "user" order by random() limit 1),
         (select random() * 10 + 1));
 
-
-
+insert into "trash"("groupId", "deletedId", "deletedDate")
+values ((select "id" from "group" where "groupName" = 'ИСТ-120' limit 1),
+        (select "id" from "attachment" order by random() limit 1), CURRENT_TIMESTAMP),
+       ((select "id" from "group" where "groupName" = 'ИСТ-120' limit 1),
+        (select "id" from "user" order by random() limit 1), CURRENT_TIMESTAMP),
+       ((select "id" from "group" where "groupName" = 'ИСТ-120' limit 1),
+        (select "id" from "quiz" order by random() limit 1), CURRENT_TIMESTAMP),
+       ((select "id" from "group" where "groupName" = 'ИСТ-120' limit 1),
+        (select "id" from "quizResult" order by random() limit 1), CURRENT_TIMESTAMP),
+       ((select "id" from "group" where "groupName" = 'ИСТ-120' limit 1),
+        (select "id" from "quizHistory" order by random() limit 1), CURRENT_TIMESTAMP),
+       ((select "id" from "group" where "groupName" = 'ИСТ-120' limit 1),
+        (select "id" from "question" order by random() limit 1), CURRENT_TIMESTAMP),
+       ((select "id" from "group" where "groupName" = 'ИСТ-120' limit 1),
+        (select "id" from "tutor" order by random() limit 1), CURRENT_TIMESTAMP),
+       ((select "id" from "group" where "groupName" = 'ИСТ-120' limit 1),
+        (select "id" from "employee" order by random() limit 1), CURRENT_TIMESTAMP),
+       ((select "id" from "group" where "groupName" = 'ИСТ-120' limit 1),
+        (select "id" from "software" order by random() limit 1), CURRENT_TIMESTAMP),
+       ((select "id" from "group" where "groupName" = 'ИСТ-120' limit 1),
+        (select "id" from "event" order by random() limit 1), CURRENT_TIMESTAMP);
