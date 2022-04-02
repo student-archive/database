@@ -63,7 +63,8 @@ create table if not exists "software"
 (
     "id"          uuid primary key default gen_random_uuid(),
     "link"        text null,
-    "description" text not null
+    "description" text not null,
+    "subject_id"  uuid not null references "subject"
 );
 
 create table if not exists "attachment_type"
