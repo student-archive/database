@@ -26,7 +26,7 @@ values ((select "id" from "attachmentType" order by random() limit 1),
        ((select "id" from "attachmentType" order by random() limit 1),
         'https://vk.com/s/v1/doc/yEA81_7cif89xkAu8gb_SCMFuY327YAHV3gIh__K6cyCW3nNF6Y');
 
-insert into "software" ("subjectId", "link")
+insert into "software" ("subject_id", "link")
 values ((select "id" from "subject" order by random() limit 1),
         'https://torrentnote.ru/torrent-site/rutracker'),
        ((select "id" from "subject" order by random() limit 1),

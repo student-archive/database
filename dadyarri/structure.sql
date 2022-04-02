@@ -28,7 +28,7 @@ create table if not exists "group"
 (
     "id"           uuid primary key default gen_random_uuid(),
     "specialityId" uuid not null references "speciality",
-    "groupName"    text not null
+    "group_name"    text not null
 );
 
 create table if not exists "role"
@@ -41,7 +41,7 @@ create table if not exists "role"
 create table if not exists "user"
 (
     "id"        uuid primary key default gen_random_uuid(),
-    "groupId"   uuid null references "group",
+    "group_id"   uuid null references "group",
     "accountId" uuid not null references "account",
     "roleId"    uuid not null references "role",
     "firstName" text not null,
@@ -51,8 +51,8 @@ create table if not exists "user"
 create table if not exists "subject"
 (
     "id"          uuid primary key default gen_random_uuid(),
-    "groupId"     uuid not null references "group",
-    "subjectName" text not null,
+    "group_id"     uuid not null references "group",
+    "subject_name" text not null,
     "semester"    int  not null
 );
 
@@ -73,7 +73,7 @@ create table if not exists "tutor"
 
 create table if not exists "subject_tutor"
 (
-    "subjectId" uuid references "subject" on update cascade on delete set null,
+    "subject_id" uuid references "subject" on update cascade on delete set null,
     "tutorId"   uuid references "tutor" on update cascade on delete set null,
-    constraint subject_tutor_pkey primary key ("subjectId", "tutorId")
+    constraint subject_tutor_pkey primary key ("subject_id", "tutorId")
 );

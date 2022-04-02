@@ -37,7 +37,7 @@ values ('Информационные системы и технологии'),
        ('Приборостроение'),
        ('Информационная безопасность');
 
-insert into "group" ("specialityId", "groupName")
+insert into "group" ("specialityId", "group_name")
 values ((select "id" from "speciality" where "specialityName" = 'Информационные системы и технологии' limit 1),
         'ИСТ-120'),
        ((select "id" from "speciality" where "specialityName" = 'Программная инженерия' limit 1), 'ПРИ-120'),
@@ -56,39 +56,39 @@ values ('Студент', 'Чтение страниц'),
        ('Староста', 'Внесение изменений'),
        ('Модератор', 'Глобальная поддержка');
 
-insert into "user" ("groupId", "accountId", "roleId", "firstName", "lastName")
-values ((select "id" from "group" where "groupName" = 'ИСТ-120' limit 1),
+insert into "user" ("group_id", "accountId", "roleId", "firstName", "lastName")
+values ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
         (select "id" from "account" order by random() limit 1),
         (select "id" from "role" where "roleName" = 'Студент' limit 1), 'Иван', 'Петров'),
-       ((select "id" from "group" where "groupName" = 'ИСТ-120' limit 1),
+       ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
         (select "id" from "account" order by random() limit 1),
         (select "id" from "role" where "roleName" = 'Студент' limit 1), 'Иван', 'Петров'),
-       ((select "id" from "group" where "groupName" = 'ИСТ-120' limit 1),
+       ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
         (select "id" from "account" order by random() limit 1),
         (select "id" from "role" where "roleName" = 'Студент' limit 1), 'Иван', 'Петров'),
-       ((select "id" from "group" where "groupName" = 'ИСТ-120' limit 1),
+       ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
         (select "id" from "account" order by random() limit 1),
         (select "id" from "role" where "roleName" = 'Студент' limit 1), 'Иван', 'Петров'),
-       ((select "id" from "group" where "groupName" = 'ИСТ-120' limit 1),
+       ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
         (select "id" from "account" order by random() limit 1),
         (select "id" from "role" where "roleName" = 'Студент' limit 1), 'Иван', 'Петров'),
-       ((select "id" from "group" where "groupName" = 'ИСТ-120' limit 1),
+       ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
         (select "id" from "account" order by random() limit 1),
         (select "id" from "role" where "roleName" = 'Студент' limit 1), 'Иван', 'Петров'),
-       ((select "id" from "group" where "groupName" = 'ИСТ-120' limit 1),
+       ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
         (select "id" from "account" order by random() limit 1),
         (select "id" from "role" where "roleName" = 'Студент' limit 1), 'Иван', 'Петров'),
-       ((select "id" from "group" where "groupName" = 'ИСТ-120' limit 1),
+       ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
         (select "id" from "account" order by random() limit 1),
         (select "id" from "role" where "roleName" = 'Студент' limit 1), 'Иван', 'Петров'),
-       ((select "id" from "group" where "groupName" = 'ИСТ-120' limit 1),
+       ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
         (select "id" from "account" order by random() limit 1),
         (select "id" from "role" where "roleName" = 'Студент' limit 1), 'Иван', 'Петров'),
-       ((select "id" from "group" where "groupName" = 'ИСТ-120' limit 1),
+       ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
         (select "id" from "account" order by random() limit 1),
         (select "id" from "role" where "roleName" = 'Студент' limit 1), 'Иван', 'Петров');
 
-insert into "subject" ("groupId", "subjectName", semester)
+insert into "subject" ("group_id", "subject_name", semester)
 values ((select "id" from "group" order by random() limit 1), 'Интерактивные графические системы', 5),
        ((select "id" from "group" order by random() limit 1), 'Моделирование систем', 5),
        ((select "id" from "group" order by random() limit 1), 'Распределенные программные системы', 5),
@@ -117,7 +117,7 @@ values ('Кириллова', 'Светлана', 'Юрьевна'),
        ('Данилов', 'Владислав', 'Валерьевич'),
        ('Жигалов', 'Илья', 'Евгеньевич');
 
-insert into "subject_tutor" ("subjectId", "tutorId")
+insert into "subject_tutor" ("subject_id", "tutorId")
 values ((select "id" from "subject" order by random() limit 1), (select "id" from "tutor" order by random() limit 1)),
        ((select "id" from "subject" order by random() limit 1), (select "id" from "tutor" order by random() limit 1)),
        ((select "id" from "subject" order by random() limit 1), (select "id" from "tutor" order by random() limit 1)),
