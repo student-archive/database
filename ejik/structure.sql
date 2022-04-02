@@ -7,7 +7,7 @@ create table if not exists "speciality"
 create table if not exists "employee"
 (
     "id"          uuid primary key default gen_random_uuid(),
-    "firstn_name" text not null,
+    "first_name" text not null,
     "last_name"   text not null,
     "patronymic"  text null,
     "email"       text null
