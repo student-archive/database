@@ -9,12 +9,13 @@ create table if not exists "event"
 (
     "id"                uuid primary key default gen_random_uuid(),
     "event_priority_id" uuid      not null references "event_priority",
-    "group_id"          uuid      null references "group" check ( user_id == null ),
-    "user_id"           uuid      null references "user" check ( group_id == null ),
+    "group_id"          uuid      null references "group",
+    "user_id"           uuid      null references "user",
     "event_text"        text      not null,
     "event_description" text      null,
     "event_date"        timestamp not null
 );
+
 create table if not exists "trash"
 (
     "id"           uuid primary key default gen_random_uuid(),
