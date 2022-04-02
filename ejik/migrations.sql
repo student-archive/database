@@ -30,3 +30,19 @@ alter table "quiz"
 -- Изменение поля
 alter table "quiz"
     alter column "quiz_description" drop not null;
+
+-- Добавление поля
+alter table "user"
+    add column "collect_telemetry" boolean;
+
+-- Удаление поля
+alter table "user"
+    drop column "collect_telemetry";
+
+-- Переименование поля
+alter table "user"
+    rename "avatar_link" to "image_link";
+
+-- Изменение поля
+alter table "user"
+    alter column "avatar_link" drop not null;
