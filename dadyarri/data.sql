@@ -138,6 +138,16 @@ insert into "subject" ("group_id", "subject_name", "semester")
 values ((select "id" from "group" order by random() limit 1), 'Интерактивные графические системы', 5),
        ((select "id" from "group" order by random() limit 1), 'Моделирование систем', 5),
        ((select "id" from "group" order by random() limit 1), 'Распределенные программные системы', 5),
+       ((select "id" from "group" order by random() limit 1), 'Теория информационных процессов и систем', 5),
+       ((select "id" from "group" order by random() limit 1), 'Технологии программирования', 5),
+       ((select "id" from "group" order by random() limit 1), 'Тестирование программного обеспечения', 5),
+       ((select "id" from "group" order by random() limit 1), 'Экономика', 5),
+       ((select "id" from "group" order by random() limit 1), 'Элективные занятия по физической культуре', 5),
+       ((select "id" from "group" order by random() limit 1), 'Элективные занятия по физической культуре', 6),
+       ((select "id" from "group" order by random() limit 1), 'CASE-технологии', 6),
+       ((select "id" from "group" order by random() limit 1),
+        'Администрирование и безопасность программно-информационных систем', 6),
+       ((select "id" from "group" order by random() limit 1), 'Геоинформационные технологии', 6),
        ((select "id" from "group" order by random() limit 1), 'Основы разработки веб-приложений', 6),
        ((select "id" from "group" order by random() limit 1), 'Распределенные программные системы', 6);
 

@@ -74,27 +74,17 @@ values ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limi
        ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое лямба-выражения?', 2, 10),
        ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое поток?', 2, 10);
 
-insert into "quiz_variant"("question_id", "quiz_variant_text", "is_correct", "quiz_submit_date")
-values ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'Экземпляр класса', true,
-        CURRENT_TIMESTAMP),
-       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'класс', false,
-        CURRENT_TIMESTAMP),
-       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'метод', false,
-        CURRENT_TIMESTAMP),
-       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'namespace', false,
-        CURRENT_TIMESTAMP),
-       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'framework', false,
-        CURRENT_TIMESTAMP),
-       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'library', false,
-        CURRENT_TIMESTAMP),
-       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'свойство', false,
-        CURRENT_TIMESTAMP),
-       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'атрибут', false,
-        CURRENT_TIMESTAMP),
-       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'любовь', false,
-        CURRENT_TIMESTAMP),
-       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), '42', true,
-        CURRENT_TIMESTAMP);
+insert into "quiz_variant"("question_id", "quiz_variant_text", "is_correct")
+values ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'Экземпляр класса', true),
+       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'класс', false),
+       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'метод', false),
+       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'namespace', false),
+       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'framework', false),
+       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'library', false),
+       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'свойство', false),
+       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'атрибут', false),
+       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'любовь', false),
+       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), '42', true);
 
 insert into "quiz_history" ("question_id", "selected_variant_id", "user_id")
 values ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1),
@@ -128,25 +118,25 @@ values ((select "id" from "question" where "question_text" = 'Что такое 
         (select "id" from "quiz_variant" order by random() limit 1),
         (select "id" from "user" order by random() limit 1));
 
-insert into "quiz_result" ("quiz_id", "user_id", result)
+insert into "quiz_result" ("quiz_id", "user_id", "result", "quiz_submit_date")
 values ((select "id" from quiz order by random() limit 1), (select "id" from "user" order by random() limit 1),
-        (select random() * 10 + 1)),
+        (select random() * 10 + 1), CURRENT_TIMESTAMP),
        ((select "id" from quiz order by random() limit 1), (select "id" from "user" order by random() limit 1),
-        (select random() * 10 + 1)),
+        (select random() * 10 + 1), CURRENT_TIMESTAMP),
        ((select "id" from quiz order by random() limit 1), (select "id" from "user" order by random() limit 1),
-        (select random() * 10 + 1)),
+        (select random() * 10 + 1), CURRENT_TIMESTAMP),
        ((select "id" from quiz order by random() limit 1), (select "id" from "user" order by random() limit 1),
-        (select random() * 10 + 1)),
+        (select random() * 10 + 1), CURRENT_TIMESTAMP),
        ((select "id" from quiz order by random() limit 1), (select "id" from "user" order by random() limit 1),
-        (select random() * 10 + 1)),
+        (select random() * 10 + 1), CURRENT_TIMESTAMP),
        ((select "id" from quiz order by random() limit 1), (select "id" from "user" order by random() limit 1),
-        (select random() * 10 + 1)),
+        (select random() * 10 + 1), CURRENT_TIMESTAMP),
        ((select "id" from quiz order by random() limit 1), (select "id" from "user" order by random() limit 1),
-        (select random() * 10 + 1)),
+        (select random() * 10 + 1), CURRENT_TIMESTAMP),
        ((select "id" from quiz order by random() limit 1), (select "id" from "user" order by random() limit 1),
-        (select random() * 10 + 1)),
+        (select random() * 10 + 1), CURRENT_TIMESTAMP),
        ((select "id" from quiz order by random() limit 1), (select "id" from "user" order by random() limit 1),
-        (select random() * 10 + 1));
+        (select random() * 10 + 1), CURRENT_TIMESTAMP);
 
 insert into "trash"("group_id", "deleted_id", "deleted_date")
 values ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
