@@ -20,4 +20,4 @@ alter table "user"
 
 -- Изменение поля
 alter table "user"
-    alter column "image_link" drop not null;
+    alter column "avatar_link" drop not null;
