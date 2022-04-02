@@ -1,6 +1,6 @@
 create table if not exists "speciality"
 (
-    "id"              uuid primary key default gen_random_uuid(),
+    "id"             uuid primary key default gen_random_uuid(),
     "speciality_name" text not null
 );
 
@@ -10,6 +10,7 @@ create table if not exists "employee"
     "first_name" text not null,
     "last_name"  text not null,
     "patronymic" text null,
+    "position"   text null,
     "email"      text null
         constraint email_pattern
             check (email ~ '^[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+$')
@@ -63,8 +64,6 @@ create table if not exists "software"
     "id"          uuid primary key default gen_random_uuid(),
     "link"        text null,
     "description" text not null
-
-
 );
 
 create table if not exists "attachment_type"
@@ -92,7 +91,6 @@ create table if not exists "page"
 );
 
 create table if not exists "page_attachment"
-
 (
     "page_id"       uuid references "page" on update cascade on delete set null,
     "attachment_id" uuid references "attachment" on update cascade on delete set null,

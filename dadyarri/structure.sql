@@ -1,79 +1,96 @@
 create table if not exists "account"
 (
-    "id"             uuid primary key default gen_random_uuid(),
-    "email"          text      not null
+    "id"               uuid primary key default gen_random_uuid(),
+    "email"            text      not null
         constraint email_pattern
             check (email ~ '^[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+$')
         unique,
-    "passwordHash"   text      not null,
-    "lastActiveDate" timestamp null
+    "password_hash"    text      not null,
+    "last_active_date" timestamp null
 );
 
-create table if not exists "inviteCode"
+create table if not exists "invite_code"
 (
-    "id"            uuid primary key   default gen_random_uuid(),
-    "accountId"     uuid      null references "account",
-    "inviteCode"    text      not null,
-    "isValid"       bool      not null default true,
-    "activatedDate" timestamp null
+    "id"             uuid primary key   default gen_random_uuid(),
+    "account_id"     uuid      null references "account",
+    "invite_code"    text      not null,
+    "is_valid"       bool      not null default true,
+    "activated_date" timestamp null
 );
 
 create table if not exists "speciality"
 (
-    "id"             uuid primary key default gen_random_uuid(),
-    "specialityName" text not null
+    "id"              uuid primary key default gen_random_uuid(),
+    "speciality_name" text not null
 );
 
 create table if not exists "group"
 (
-    "id"           uuid primary key default gen_random_uuid(),
-    "specialityId" uuid not null references "speciality",
-    "groupName"    text not null
+    "id"            uuid primary key default gen_random_uuid(),
+    "speciality_id" uuid not null references "speciality",
+    "group_name"    text not null,
+    "university_id" uuid not null
 );
 
 create table if not exists "role"
 (
-    "id"              uuid primary key default gen_random_uuid(),
-    "roleName"        text not null,
-    "roleDescription" text not null
+    "id"               uuid primary key default gen_random_uuid(),
+    "role_name"        text not null,
+    "role_description" text not null
 );
 
 create table if not exists "user"
 (
-    "id"        uuid primary key default gen_random_uuid(),
-    "groupId"   uuid null references "group",
-    "accountId" uuid not null references "account",
-    "roleId"    uuid not null references "role",
-    "firstName" text not null,
-    "lastName"  text not null
+    "id"          uuid primary key default gen_random_uuid(),
+    "group_id"    uuid null references "group",
+    "account_id"  uuid not null references "account",
+    "role_id"     uuid not null references "role",
+    "sex_id"      int  not null references "sex",
+    "first_name"  text not null,
+    "last_name"   text not null,
+    "avatar_link" text not null
 );
 
 create table if not exists "subject"
 (
-    "id"          uuid primary key default gen_random_uuid(),
-    "groupId"     uuid not null references "group",
-    "subjectName" text not null,
-    "semester"    int  not null
+    "id"           uuid primary key default gen_random_uuid(),
+    "group_id"     uuid not null references "group",
+    "subject_name" text not null,
+    "semester"     int  not null
 );
 
 create table if not exists "tutor"
 (
     "id"         uuid primary key default gen_random_uuid(),
-    "firstName"  text not null,
-    "lastName"   text not null,
-    "patronymic" text null,
-    "email"      text null
+    "first_name" text    not null,
+    "last_name"  text    not null,
+    "patronymic" text    null,
+    "email"      text    null
         constraint email_pattern
             check (email ~ '^[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+$'),
-    "phone"      text null
+    "phone"      text    null
         constraint phone_pattern
             check ( phone ~ '^\+[1-9]\d{1,14}$' ),
-    "link"       text null
+    "link"       text    null,
+    "is_working" boolean not null
+
 );
 
 create table if not exists "subject_tutor"
 (
     "subject_id" uuid references "subject" on update cascade on delete set null,
-    "tutorId"   uuid references "tutor" on update cascade on delete set null,
-    constraint subject_tutor_pkey primary key ("subject_id", "tutorId")
+    "tutor_id"   uuid references "tutor" on update cascade on delete set null,
+    constraint subject_tutor_pkey primary key ("subject_id", "tutor_id")
+);
+
+create table if not exists "sex"
+(
+    "id"       int  not null,
+    "sex_name" text not null
+);
+
+create table if not exists "university"
+(
+    "id"              uuid primary key default gen_random_uuid(),
+    "university_name" text not null
 );

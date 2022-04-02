@@ -117,7 +117,7 @@ values ('Кириллова', 'Светлана', 'Юрьевна'),
        ('Данилов', 'Владислав', 'Валерьевич'),
        ('Жигалов', 'Илья', 'Евгеньевич');
 
-insert into "subject_tutor" ("subject_id", "tutorId")
+insert into "subject_tutor" ("subjectId", "tutorId")
 values ((select "id" from "subject" order by random() limit 1), (select "id" from "tutor" order by random() limit 1)),
        ((select "id" from "subject" order by random() limit 1), (select "id" from "tutor" order by random() limit 1)),
        ((select "id" from "subject" order by random() limit 1), (select "id" from "tutor" order by random() limit 1)),
