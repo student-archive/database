@@ -1,14 +1,14 @@
 create table if not exists "speciality"
 (
     "id"             uuid primary key default gen_random_uuid(),
-    "specialityName" text not null
+    "speciality_name" text not null
 );
 
 create table if not exists "employee"
 (
     "id"         uuid primary key default gen_random_uuid(),
-    "firstName"  text not null,
-    "lastName"   text not null,
+    "first_name"  text not null,
+    "last_name"   text not null,
     "patronymic" text null,
     "position"   text null,
     "email"      text null
@@ -24,9 +24,9 @@ create table if not exists "employee"
 
 create table if not exists "speciality_employee"
 (
-    "specialityId" uuid references "speciality" on update cascade on delete set null,
+    "speciality_id" uuid references "speciality" on update cascade on delete set null,
     "employeeId"   uuid references "employee" on update cascade on delete set null,
-    constraint speciality_employee_pkey primary key ("specialityId", "employeeId")
+    constraint speciality_employee_pkey primary key ("speciality_id", "employeeId")
 );
 
 create table if not exists "certificate"

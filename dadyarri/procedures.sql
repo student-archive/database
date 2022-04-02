@@ -3,17 +3,17 @@ create or replace procedure "invalidateInvite"(code text, account uuid)
 as
 $$
 begin
-    update "inviteCode"
-    set "accountId" = account
-    where "inviteCode" = code;
+    update "invite_code"
+    set "account_id" = account
+    where "invite_code" = code;
 
-    update "inviteCode"
-    set "activatedDate" = CURRENT_TIMESTAMP
-    where "inviteCode" = code;
+    update "invite_code"
+    set "activated_date" = CURRENT_TIMESTAMP
+    where "invite_code" = code;
 
-    update "inviteCode"
-    set "isValid" = false
-    where "inviteCode" = code;
+    update "invite_code"
+    set "is_valid" = false
+    where "invite_code" = code;
     commit;
 end;
 $$

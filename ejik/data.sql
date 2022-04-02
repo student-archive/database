@@ -72,7 +72,7 @@ values ((select "id" from "page" order by random() limit 1), (select "id" from "
        ((select "id" from "page" order by random() limit 1), (select "id" from "attachment" order by random() limit 1)),
        ((select "id" from "page" order by random() limit 1), (select "id" from "attachment" order by random() limit 1));
 
-insert into "employee" ("firstName", "lastName", patronymic)
+insert into "employee" ("first_name", "last_name", patronymic)
 values ('Кириллова', 'Светлана', 'Юрьевна'),
        ('Озерова', 'Марина', 'Игоревна'),
        ('Шамышева', 'Ольга', 'Николаевна'),
@@ -118,7 +118,7 @@ values ((select "id" from "employee" order by random() limit 1),
        ((select "id" from "employee" order by random() limit 1),
         (select "id" from "certificate" order by random() limit 1));
 
-insert into "speciality_employee" ("specialityId", "employeeId")
+insert into "speciality_employee" ("speciality_id", "employeeId")
 values ((select "id" from "speciality" order by random() limit 1),
         (select "id" from "employee" order by random() limit 1)),
        ((select "id" from "speciality" order by random() limit 1),
