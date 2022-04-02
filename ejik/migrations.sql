@@ -1,5 +1,5 @@
 alter table "attachment"
-    add column "checksum" text;
+    add column "checksum1" text;
 alter table "group"
     add column "universityId" text not null references "university";
 alter table "software"
@@ -13,3 +13,5 @@ create table if not exists "university"
 
 
 );
+alter table "attachment"
+    alter column  "checksum1"  drop  not null ;
