@@ -25,7 +25,7 @@ create table if not exists "trash"
 create table if not exists "quiz"
 (
     "id"              uuid primary key default gen_random_uuid(),
-    "subjectId"       uuid not null references "subject",
+    "subject_id"       uuid not null references "subject",
     "quizName"        text not null,
     "quizDescription" text not null
 );

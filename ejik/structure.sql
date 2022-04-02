@@ -1,16 +1,15 @@
 create table if not exists "speciality"
 (
-    "id"             uuid primary key default gen_random_uuid(),
-    "specialityName" text not null
+    "id"              uuid primary key default gen_random_uuid(),
+    "speciality_name" text not null
 );
 
 create table if not exists "employee"
 (
     "id"         uuid primary key default gen_random_uuid(),
-    "firstName"  text not null,
-    "lastName"   text not null,
+    "first_name" text not null,
+    "last_name"  text not null,
     "patronymic" text null,
-    "position"   text null,
     "email"      text null
         constraint email_pattern
             check (email ~ '^[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+$')
@@ -22,50 +21,65 @@ create table if not exists "employee"
 
 );
 
+create table if not exists "employee_position"
+(
+    "id"       uuid primary key default gen_random_uuid(),
+    "position" text not null
+);
+
+create table if not exists "employee_employee_position"
+(
+    "employee_position_id" uuid references "employee_position" on update cascade on delete set null,
+
+    "employee_id"          uuid references "employee" on update cascade on delete set null,
+    constraint employee_position_employee_pkey primary key ("employee_position_id", "employee_id")
+);
+
 create table if not exists "speciality_employee"
 (
-    "specialityId" uuid references "speciality" on update cascade on delete set null,
-    "employeeId"   uuid references "employee" on update cascade on delete set null,
-    constraint speciality_employee_pkey primary key ("specialityId", "employeeId")
+    "speciality_id" uuid references "speciality" on update cascade on delete set null,
+    "employee_id"   uuid references "employee" on update cascade on delete set null,
+    constraint speciality_employee_pkey primary key ("speciality_id", "employee_id")
 );
 
 create table if not exists "certificate"
 (
-    "id"                     uuid primary key default gen_random_uuid(),
-    "employeeId"             uuid not null references "employee",
-    "certificateName"        text not null,
-    "certificateDescription" text not null,
-    "office"                 text not null
+    "id"                      uuid primary key default gen_random_uuid(),
+    "employee_id"             uuid not null references "employee",
+    "certificate_name"        text not null,
+    "certificate_description" text not null,
+    "office"                  text not null
 );
 
 create table if not exists "employee_certificate"
 (
-    "employeeId"    uuid references "employee" on update cascade on delete set null,
-    "certificateId" uuid references "certificate" on update cascade on delete set null
+    "employee_id"    uuid references "employee" on update cascade on delete set null,
+    "certificate_id" uuid references "certificate" on update cascade on delete set null
 
 );
 
 create table if not exists "software"
 (
-    "id"        uuid primary key default gen_random_uuid(),
-    "link"      text null
-
+    "id"          uuid primary key default gen_random_uuid(),
+    "link"        text null,
+    "description" text not null
 
 
 );
 
-create table if not exists "attachmentType"
+create table if not exists "attachment_type"
 (
-    "id"       uuid primary key default gen_random_uuid(),
-    "typeName" text not null
+    "id"        uuid primary key default gen_random_uuid(),
+    "type_name" text not null
 );
 
 create table if not exists "attachment"
 (
-    "id"     uuid primary key default gen_random_uuid(),
-    "typeId" uuid not null references "attachmentType",
-    "link"   text null
-
+    "id"       uuid primary key default gen_random_uuid(),
+    "type_id"  uuid not null references "attachment_type",
+    "link"     text null,
+    "author"   text null,
+    "checksum" text not null
 
 );
 
@@ -78,8 +92,9 @@ create table if not exists "page"
 );
 
 create table if not exists "page_attachment"
+
 (
-    "pageId"       uuid references "page" on update cascade on delete set null,
-    "attachmentId" uuid references "attachment" on update cascade on delete set null,
-    constraint page_attachment_pkey primary key ("pageId", "attachmentId")
-)
+    "page_id"       uuid references "page" on update cascade on delete set null,
+    "attachment_id" uuid references "attachment" on update cascade on delete set null,
+    constraint page_attachment_pkey primary key ("page_id", "attachment_id")
+);
