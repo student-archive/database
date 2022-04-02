@@ -37,7 +37,7 @@ values ((select "id" from "event_priority" where "priority_name" = 'low' limit 1
         (select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
         'Завтра последняя пересдача по ТП', CURRENT_TIMESTAMP);
 
-insert into "quiz" ("subject_id", "quiz_name", "quiz_description", "questions_amount" )
+insert into "quiz" ("subject_id", "quiz_name", "quiz_description", "questions_amount")
 values ((select "id" from "subject" where "subject_name" = 'Тестирование программного обеспечения' limit 1),
         'Рейтинг1 ТПО', 'Подготовка к рейтингу 1 по тестированию ПО', 10),
        ((select "id" from "subject" where "subject_name" = 'Тестирование программного обеспечения' limit 1),
@@ -62,29 +62,39 @@ values ((select "id" from "subject" where "subject_name" = 'Тестирован
          limit 1), 'Рейтинг1',
         'Подготовка к рейтингу 1 по Администрирование и безопасность программно-информационных систем', 10);
 
-insert into "question" ("quiz_id", "question_text","correct_answers_amount","total_answers_amount")
-values ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое объект?',2,10),
-       ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое метод?',2,10),
-       ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое класс?',2,10),
-       ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое полиморфизм?',2,10),
-       ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое наследование?',2,10),
-       ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое инкапсуляция?',2,10),
-       ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое делегат?',2,10),
-       ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое интерфейс?',2,10),
-       ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое лямба-выражения?',2,10),
-       ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое поток?',2,10);
+insert into "question" ("quiz_id", "question_text", "correct_answers_amount", "total_answers_amount")
+values ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое объект?', 2, 10),
+       ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое метод?', 2, 10),
+       ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое класс?', 2, 10),
+       ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое полиморфизм?', 2, 10),
+       ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое наследование?', 2, 10),
+       ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое инкапсуляция?', 2, 10),
+       ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое делегат?', 2, 10),
+       ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое интерфейс?', 2, 10),
+       ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое лямба-выражения?', 2, 10),
+       ((select "id" from "quiz" where "quiz_name" = 'Рейтинг1 тп' limit 1), 'Что такое поток?', 2, 10);
 
-insert into "quiz_variant"("question_id", "quiz_variant_text", "is_correct","quiz_submit_date")
-values ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'Экземпляр класса', true, CURRENT_TIMESTAMP),
-       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'класс', false, CURRENT_TIMESTAMP),
-       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'метод', false, CURRENT_TIMESTAMP),
-       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'namespace', false, CURRENT_TIMESTAMP),
-       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'framework', false, CURRENT_TIMESTAMP),
-       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'library', false, CURRENT_TIMESTAMP),
-       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'свойство', false, CURRENT_TIMESTAMP),
-       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'атрибут', false, CURRENT_TIMESTAMP),
-       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'любовь', false, CURRENT_TIMESTAMP),
-       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), '42', true, CURRENT_TIMESTAMP);
+insert into "quiz_variant"("question_id", "quiz_variant_text", "is_correct", "quiz_submit_date")
+values ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'Экземпляр класса', true,
+        CURRENT_TIMESTAMP),
+       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'класс', false,
+        CURRENT_TIMESTAMP),
+       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'метод', false,
+        CURRENT_TIMESTAMP),
+       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'namespace', false,
+        CURRENT_TIMESTAMP),
+       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'framework', false,
+        CURRENT_TIMESTAMP),
+       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'library', false,
+        CURRENT_TIMESTAMP),
+       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'свойство', false,
+        CURRENT_TIMESTAMP),
+       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'атрибут', false,
+        CURRENT_TIMESTAMP),
+       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), 'любовь', false,
+        CURRENT_TIMESTAMP),
+       ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1), '42', true,
+        CURRENT_TIMESTAMP);
 
 insert into "quiz_history" ("question_id", "selected_variant_id", "user_id")
 values ((select "id" from "question" where "question_text" = 'Что такое объект?' limit 1),

@@ -34,11 +34,11 @@ create table if not exists "quiz"
 
 create table if not exists "question"
 (
-    "id"            uuid primary key default gen_random_uuid(),
-    "quiz_id"       uuid not null references "quiz",
-    "question_text" text not null,
-    "correct_answers_amount" int not null,
-    "total_answers_amount" int not null
+    "id"                     uuid primary key default gen_random_uuid(),
+    "quiz_id"                uuid not null references "quiz",
+    "question_text"          text not null,
+    "correct_answers_amount" int  not null,
+    "total_answers_amount"   int  not null
 );
 
 create table if not exists "quiz_variant"
@@ -51,19 +51,19 @@ create table if not exists "quiz_variant"
 
 create table if not exists "quiz_result"
 (
-    "id"      uuid primary key default gen_random_uuid(),
-    "quiz_id" uuid not null references "quiz",
-    "user_id" uuid not null references "user",
-    "result"  int  not null,
-    "quiz_submit_date"    timestamp not null
+    "id"               uuid primary key default gen_random_uuid(),
+    "quiz_id"          uuid      not null references "quiz",
+    "user_id"          uuid      not null references "user",
+    "result"           int       not null,
+    "quiz_submit_date" timestamp not null
 );
 
 create table if not exists "quiz_history"
 (
     "id"                  uuid primary key default gen_random_uuid(),
-    "question_id"         uuid      not null references "question",
-    "selected_variant_id" uuid      not null references "quiz_variant",
-    "user_id"             uuid      not null references "user"
+    "question_id"         uuid not null references "question",
+    "selected_variant_id" uuid not null references "quiz_variant",
+    "user_id"             uuid not null references "user"
 
 );
 
