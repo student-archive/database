@@ -1,17 +1,16 @@
+-- Добавление поля
 alter table "attachment"
     add column "checksum1" text;
-alter table "group"
-    add column "universityId" text not null references "university";
-alter table "software"
-    add column "description" text;
-alter table "attachment"
-    add column "author" text null;
-create table if not exists "university"
-(
-    "id"   uuid primary key default gen_random_uuid(),
-    "name" text null
 
-
-);
+-- Удаление поля
 alter table "attachment"
-    alter column  "checksum1"  drop  not null ;
+    drop column "checksum1";
+
+-- Переименование поля
+alter table "attachment"
+    rename "author" to "author_1";
+
+-- Изменение поля
+alter table "attachment"
+    alter column "author_1" set default 'Вершинин',
+    alter column "author_1" set not null;
