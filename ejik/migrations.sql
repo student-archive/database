@@ -12,7 +12,11 @@ alter table "attachment"
 
 -- Изменение поля
 alter table "attachment"
-    alter column "author_1" set default 'Вершинин',
+    alter column "author_1" set default 'Вершинин';
+
+update "attachment" set "author_1" = 'Вершинин' where "author_1" is null;
+
+alter table "attachment"
     alter column "author_1" set not null;
 
 -- Добавление поля
