@@ -1,32 +1,32 @@
-insert into "attachmentType" ("typeName")
+insert into "attachment_type" ("type_name")
 values ('Методички'),
        ('Видео'),
        ('Учебники'),
        ('Статьи');
 
-insert into "attachment" ("typeId", "link")
-values ((select "id" from "attachmentType" order by random() limit 1),
+insert into "attachment" ("type_id", "link")
+values ((select "id" from "attachment_type" order by random() limit 1),
         'https://vk.com/s/v1/doc/I7ytkYPa88wOSnYH0DuNqjqbaYf4wTPItcodzv36n67sRkDyQ7I'),
-       ((select "id" from "attachmentType" order by random() limit 1),
+       ((select "id" from "attachment_type" order by random() limit 1),
         'https://vk.com/s/v1/doc/uSiHAquVX5pi_Z9ZgX5Hmuwtn1KDXTRu6fxFt5s7CG3i9cktNWY'),
-       ((select "id" from "attachmentType" order by random() limit 1),
+       ((select "id" from "attachment_type" order by random() limit 1),
         'https://vk.com/s/v1/doc/u1xvnpF85jfbtPP9ZuIAgBiaZg0zoZHDTVWYLDF-RUK-Z5QC2hs'),
-       ((select "id" from "attachmentType" order by random() limit 1),
+       ((select "id" from "attachment_type" order by random() limit 1),
         'https://vk.com/doc452041075_588289056'),
-       ((select "id" from "attachmentType" order by random() limit 1),
+       ((select "id" from "attachment_type" order by random() limit 1),
         'https://vk.com/doc452041075_590431890'),
-       ((select "id" from "attachmentType" order by random() limit 1),
+       ((select "id" from "attachment_type" order by random() limit 1),
         'https://vk.com/doc452041075_580849301'),
-       ((select "id" from "attachmentType" order by random() limit 1),
+       ((select "id" from "attachment_type" order by random() limit 1),
         'https://vk.com/doc452041075_578284991'),
-       ((select "id" from "attachmentType" order by random() limit 1),
+       ((select "id" from "attachment_type" order by random() limit 1),
         'https://vk.com/s/v1/doc/3LPOqEUh-z-KBV1SN2oI2lF_SS89Szs5azgjklZZL4G3SrN2RHY'),
-       ((select "id" from "attachmentType" order by random() limit 1),
+       ((select "id" from "attachment_type" order by random() limit 1),
         'https://vk.com/s/v1/doc/_rJ5Lur_rYDnZ4j-6Q0OWsryAKLJS5p24KtpIov1Nsd-DXGQzOI'),
-       ((select "id" from "attachmentType" order by random() limit 1),
+       ((select "id" from "attachment_type" order by random() limit 1),
         'https://vk.com/s/v1/doc/yEA81_7cif89xkAu8gb_SCMFuY327YAHV3gIh__K6cyCW3nNF6Y');
 
-insert into "software" ("subjectId", "link")
+insert into "software" ("subject_id", "link")
 values ((select "id" from "subject" order by random() limit 1),
         'https://torrentnote.ru/torrent-site/rutracker'),
        ((select "id" from "subject" order by random() limit 1),
@@ -60,7 +60,7 @@ values ('https://vk.com/im?peers=229126128_c18_c31_189321936&sel=c48'),
        ('https://vk.com/im?peers=229126128_c18_c31_189321936&sel=c56'),
        ('https://vk.com/im?peers=229126128_c18_c31_189321936&sel=c57');
 
-insert into "page_attachment" ("pageId", "attachmentId")
+insert into "page_attachment" ("page_id", "attachment_id")
 values ((select "id" from "page" order by random() limit 1), (select "id" from "attachment" order by random() limit 1)),
        ((select "id" from "page" order by random() limit 1), (select "id" from "attachment" order by random() limit 1)),
        ((select "id" from "page" order by random() limit 1), (select "id" from "attachment" order by random() limit 1)),
@@ -72,7 +72,7 @@ values ((select "id" from "page" order by random() limit 1), (select "id" from "
        ((select "id" from "page" order by random() limit 1), (select "id" from "attachment" order by random() limit 1)),
        ((select "id" from "page" order by random() limit 1), (select "id" from "attachment" order by random() limit 1));
 
-insert into "employee" ("firstName", "lastName", patronymic)
+insert into "employee" ("first_name", "last_name", patronymic)
 values ('Кириллова', 'Светлана', 'Юрьевна'),
        ('Озерова', 'Марина', 'Игоревна'),
        ('Шамышева', 'Ольга', 'Николаевна'),
@@ -84,7 +84,7 @@ values ('Кириллова', 'Светлана', 'Юрьевна'),
        ('Данилов', 'Владислав', 'Валерьевич'),
        ('Жигалов', 'Илья', 'Евгеньевич');
 
-insert into "certificate" ("employeeId", "certificateName", "certificateDescription", office)
+insert into "certificate" ("employee_id", "certificate_name", "certificate_description", office)
 values ((select "id" from "employee" order by random() limit 1), 'Справка №789545', 'справка не твое дело1', '402-2'),
        ((select "id" from "employee" order by random() limit 1), 'Справка №786545', 'справка не твое дело2', '402-2'),
        ((select "id" from "employee" order by random() limit 1), 'Справка №785545', 'справка не твое дело3', '402-2'),
@@ -96,7 +96,7 @@ values ((select "id" from "employee" order by random() limit 1), 'Справка
        ((select "id" from "employee" order by random() limit 1), 'Справка №89545', 'справка не твое дело9', '402-2'),
        ((select "id" from "employee" order by random() limit 1), 'Справка №78545', 'справка не твое дело10', '402-2');
 
-insert into "employee_certificate" ("employeeId", "certificateId")
+insert into "employee_certificate" ("employee_id", "certificate_id")
 values ((select "id" from "employee" order by random() limit 1),
         (select "id" from "certificate" order by random() limit 1)),
        ((select "id" from "employee" order by random() limit 1),
@@ -118,7 +118,7 @@ values ((select "id" from "employee" order by random() limit 1),
        ((select "id" from "employee" order by random() limit 1),
         (select "id" from "certificate" order by random() limit 1));
 
-insert into "speciality_employee" ("specialityId", "employeeId")
+insert into "speciality_employee" ("speciality_id", "employee_id")
 values ((select "id" from "speciality" order by random() limit 1),
         (select "id" from "employee" order by random() limit 1)),
        ((select "id" from "speciality" order by random() limit 1),
