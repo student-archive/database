@@ -6,18 +6,18 @@ create table if not exists "speciality"
 
 create table if not exists "employee"
 (
-    "id"          uuid primary key default gen_random_uuid(),
+    "id"         uuid primary key default gen_random_uuid(),
     "first_name" text not null,
-    "last_name"   text not null,
-    "patronymic"  text null,
-    "email"       text null
+    "last_name"  text not null,
+    "patronymic" text null,
+    "email"      text null
         constraint email_pattern
             check (email ~ '^[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+$')
         unique,
-    "phone"       text null
+    "phone"      text null
         constraint phone_pattern
             check ( phone ~ '^\+[1-9]\d{1,14}$' ),
-    "link"        text null
+    "link"       text null
 
 );
 

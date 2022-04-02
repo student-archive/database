@@ -37,7 +37,7 @@ values ((select "id" from "eventPriority" where "priorityName" = 'low' limit 1),
         (select "id" from "group" where "groupName" = 'ИСТ-120' limit 1),
         'Завтра последняя пересдача по ТП', CURRENT_TIMESTAMP);
 
-insert into "quiz" ("subjectId", "quizName", "quizDescription")
+insert into "quiz" ("subject_id", "quizName", "quizDescription")
 values ((select "id" from "subject" where "subjectName" = 'Тестирование программного обеспечения' limit 1),
         'Рейтинг1 ТПО', 'Подготовка к рейтингу 1 по тестированию ПО'),
        ((select "id" from "subject" where "subjectName" = 'Тестирование программного обеспечения' limit 1),
