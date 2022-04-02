@@ -37,7 +37,7 @@ values ('Информационные системы и технологии'),
        ('Приборостроение'),
        ('Информационная безопасность');
 
-insert into "group" ("speciality_id", "group_name", university_id)
+insert into "group" ("speciality_id", "group_name", "university_id")
 values ((select "id" from "speciality" where "speciality_name" = 'Информационные системы и технологии' limit 1),
         'ИСТ-120', (select "id" from "university" where "university_name" = 'ВлГУ' limit 1)),
        ((select "id" from "speciality" where "speciality_name" = 'Программная инженерия' limit 1), 'ПРИ-120',
@@ -118,7 +118,7 @@ values ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
         'https://www.google.com/url?sa=i&url=https%3A%2F%2Fzoo.dp.ua%2Fafrikanskij-karlikovyj-ezhik-osobennosti-porody-i-soderzhaniya%2F&psig=AOvVaw2Y8bZX448BRvER0nnTF3FC&ust=1649007025458000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCKDG6oP09fYCFQAAAAAdAAAAABAD');
 
 
-insert into "subject" ("group_id", "subject_name", semester)
+insert into "subject" ("group_id", "subject_name", "semester")
 values ((select "id" from "group" order by random() limit 1), 'Интерактивные графические системы', 5),
        ((select "id" from "group" order by random() limit 1), 'Моделирование систем', 5),
        ((select "id" from "group" order by random() limit 1), 'Распределенные программные системы', 5),
