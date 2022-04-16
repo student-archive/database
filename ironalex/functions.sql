@@ -94,6 +94,29 @@ $$ language plpgsql;
 select get_contact_information_of_group('d0a1a0a3-203e-4631-bff7-42ff99d518e2');
 
 
+create or replace function search_attachments_by_tutor(tid uuid)
+    returns table
+            (
+                "a_name" text,
+                "a_link" text
+            )
+as
+$$
+begin
+    return query (select attachment_name, attachment_link
+                  from "attachment"
+                           join tutor t on attachment.author = t.first_name
+                  where t.id = tid);
+end ;
+$$ language plpgsql;
+
+select search_attachments_by_tutor('2344e605-b565-4090-a1c1-b90969ef170d');
+
+
+
+
+
+
 
 
 
