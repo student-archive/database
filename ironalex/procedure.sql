@@ -36,6 +36,7 @@ BEGIN
                                          from quiz_result
                                          where (select result / (select questions_amount from quiz where "quiz"."id" = qid)) <
                                                0.61
+                                           and "quiz_id" = qid
                                          order by quiz_submit_date) as losers)
         loop
             insert into event (event_priority_id, user_id, event_text, event_description, event_date)
