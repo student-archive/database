@@ -55,3 +55,50 @@ end;
 $$ language plpgsql;
 
 call notify_losers('4df9416e-a741-4698-83eb-efba61097143');
+
+
+
+create or replace procedure delete_element(element_id uuid, delete_permanently boolean)
+as
+
+$$
+declare
+    is_exist boolean;
+    found    boolean;
+BEGIN
+    found = false;
+
+    select into is_exist exists((select 1 from software where id = element_id));
+    if is_exist is true then
+        found = true;
+    end if;
+    if found is false then raise exception 'Элемент не найден'; end if;
+    if delete_permanently is true then
+        delete from software where id = element_id;
+    else
+        insert into trash(group_id, deleted_id, deleted_date)
+        values ((select group_id
+                 from software
+                          join subject on software.subject_id = subject.id
+                 where software.id = element_id
+                 limit 1), element_id, current_timestamp);
+    end if;
+
+end;
+$$ language plpgsql;
+
+call delete_element('8cb220cd-4efa-4afc-bc1e-8c62036cd439', false);
+call delete_element('d591920b-e500-466c-b59f-6f133966b338', true);
+
+
+create or replace procedure calculate_result(uid uuid, qid uuid, attempt integer)
+as
+
+$$
+BEGIN
+
+end;
+$$ language plpgsql;
+
+
+
