@@ -18,7 +18,7 @@ end ;
 
 $$ language plpgsql;
 call load_attachment_example(groupid := 'b9ffe76bbc2f4908b3fa3054ba396cf9');
-DROP PROCEDURE load_attachment_example(uuid);
+
 
 
 
