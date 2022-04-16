@@ -31,7 +31,7 @@ as
 $$
 declare
     loser uuid;
-BEGIN
+begin
     foreach loser in array (select array(select user_id
                                          from quiz_result
                                          where (select result / (select questions_amount from quiz where "quiz"."id" = qid)) <
@@ -57,7 +57,7 @@ $$
 declare
     is_exist boolean;
     found    boolean;
-BEGIN
+begin
     found = false;
 
     select into is_exist exists((select 1 from software where id = element_id));
@@ -90,7 +90,7 @@ $$
 declare
     max_try integer;
     new_try integer;
-BEGIN
+begin
     select into max_try max(attempt) from quiz_result where quiz_id = qid and user_id = uid;
     if max_try is null then new_try := 1; else new_try := max_try + 1; end if;
     insert into quiz_result (quiz_id, user_id, result, quiz_submit_date, attempt)
