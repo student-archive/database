@@ -1,5 +1,4 @@
-create or replace procedure impeachment_captain (gid uuid)
-
+create or replace procedure impeachment_captain(gid uuid)
 as
 
 $$
@@ -25,3 +24,34 @@ end;
 $$ language plpgsql;
 
 call impeachment_captain('d0a1a0a3-203e-4631-bff7-42ff99d518e2');
+
+
+create or replace procedure load_articles_test(gid uuid)
+as
+
+$$
+BEGIN
+end;
+$$ language plpgsql;
+
+
+create or replace procedure notify_losers(qid uuid)
+as
+$$
+declare
+    loser uuid;
+BEGIN
+    foreach loser in array (select array(select user_id
+                                         from quiz_result
+                                         where (select result / (select questions_amount from quiz where "quiz"."id" = qid)) <
+                                               0.61
+                                         order by quiz_submit_date) as losers)
+        loop
+            insert into event (event_priority_id, user_id, event_text, event_description, event_date)
+            values ((select "id" from "event_priority" where "priority_name" = 'high' limit 1), loser,
+                    'Пройдитетест заново', 'Вы завалили тестирование, пройдите тест заново', current_timestamp);
+        end loop;
+end;
+$$ language plpgsql;
+
+call notify_losers('4df9416e-a741-4698-83eb-efba61097143');
