@@ -73,6 +73,27 @@ $$ language plpgsql;
 
 select get_academic_performance('8e7d2e8b-67b9-4aa1-afc4-c6bdcf49dfc1');
 
+create or replace function get_contact_information_of_group(gid uuid)
+    returns table
+            (
+                "f_name" text,
+                "l_name" text,
+                "e_mail" text
+            )
+as
+$$
+begin
+    return query (select first_name, last_name, email
+                  from "user"
+                           join account a on "user".account_id = a.id
+                           join "group" g on "user".group_id = g.id
+                  where group_id = gid);
+end ;
+$$ language plpgsql;
+
+select get_contact_information_of_group('d0a1a0a3-203e-4631-bff7-42ff99d518e2');
+
+
 
 
 
