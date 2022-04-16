@@ -86,9 +86,8 @@ create table if not exists "attachment"
 create table if not exists "page"
 (
     "id"   uuid primary key default gen_random_uuid(),
+    "subject_id" uuid references "subject",
     "link" text null
-
-
 );
 
 create table if not exists "page_attachment"
