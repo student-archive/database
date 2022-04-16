@@ -6,9 +6,9 @@ begin
     insert into "subject" (group_id, subject_name, semester)
     values ((select "id" from "group" where "group"."id" = groupid limit 1), 'тест', 3);
     insert into "page" (subject_id,link) values ((select "id" from "subject" where "subject"."id" = groupid limit 1),'http:/test');
-    insert into "attachment" (type_id, link, author, checksum)
+    insert into "attachment" (type_id, attachment_link, author, checksum)
     values ((select "type_id" from attachment where "checksum" = 'тест' limit 1),
-            (select "link" from attachment where "checksum" = 'тест' limit 1),
+            (select "attachment_link" from attachment where "checksum" = 'тест' limit 1),
             (select "author" from attachment where "checksum" = 'тест' limit 1),
             (select "checksum" from attachment where "checksum" = 'тест' limit 1));
 
@@ -67,7 +67,7 @@ end;
 
 
 $$ language plpgsql;
-call load_articles_materials('b9ffe76bbc2f4908b3fa3054ba396cf9');
+call load_articles_quiz('b9ffe76bbc2f4908b3fa3054ba396cf9');
 
 create or replace procedure load_articles_materials(subjectname text)
 as
@@ -76,9 +76,9 @@ begin
 
 
     insert into "page" (subject_id,link) values ((select "id" from "subject" where "subject_name" = subjectname limit 1),'http:/article');
-    insert into "attachment" (type_id, link, author, checksum)
+    insert into "attachment" (type_id, attachment_link, author, checksum)
     values ((select "type_id" from attachment where "checksum" = 'Статьи' limit 1),
-            (select "link" from attachment where "checksum" = 'Статьи' limit 1),
+            (select "attachment_link" from attachment where "checksum" = 'Статьи' limit 1),
             (select "author" from attachment where "checksum" = 'Статьи' limit 1),
             (select "checksum" from attachment where "checksum" = 'Статьи' limit 1));
 
