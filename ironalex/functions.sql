@@ -51,3 +51,31 @@ $$ language plpgsql;
 
 select randomize_quiz_variants('1528351a-fc0f-4753-a957-baf655396ba1');
 
+
+create or replace function get_academic_performance(qid uuid)
+    returns table
+            (
+                "f_name" text,
+                "l_name" text,
+                "res"    integer,
+                "total"  integer
+            )
+as
+$$
+begin
+    return query (select first_name, last_name, result, questions_amount
+                  from "user"
+                           join quiz_result qr on "user".id = qr.user_id
+                           join quiz q on qr.quiz_id = q.id
+                  where quiz_id = qid);
+end ;
+$$ language plpgsql;
+
+select get_academic_performance('8e7d2e8b-67b9-4aa1-afc4-c6bdcf49dfc1');
+
+
+
+
+
+
+
