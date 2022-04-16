@@ -112,6 +112,25 @@ $$ language plpgsql;
 
 select search_attachments_by_tutor('2344e605-b565-4090-a1c1-b90969ef170d');
 
+create or replace function search_groups_by_tutor(tid uuid)
+    returns table
+            (
+                "g_name" text
+            )
+as
+$$
+begin
+    return query (select group_name
+                  from "group"
+                           join subject s on "group".id = s.group_id
+                           join subject_tutor st on s.id = st.subject_id
+                           join tutor t on st.tutor_id = t.id
+                  where t.id = tid);
+end;
+$$ language plpgsql;
+
+select search_groups_by_tutor('b7cd5c14-98ff-4a93-b36b-fdf35bfc7bd9');
+
 
 
 
