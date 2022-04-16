@@ -26,15 +26,6 @@ $$ language plpgsql;
 call impeachment_captain('d0a1a0a3-203e-4631-bff7-42ff99d518e2');
 
 
-create or replace procedure load_articles_test(gid uuid)
-as
-
-$$
-BEGIN
-end;
-$$ language plpgsql;
-
-
 create or replace procedure notify_losers(qid uuid)
 as
 $$
