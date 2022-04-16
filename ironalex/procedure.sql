@@ -91,14 +91,26 @@ call delete_element('8cb220cd-4efa-4afc-bc1e-8c62036cd439', false);
 call delete_element('d591920b-e500-466c-b59f-6f133966b338', true);
 
 
-create or replace procedure calculate_result(uid uuid, qid uuid, attempt integer)
+create or replace procedure calculate_result(uid uuid, qid uuid, try integer)
 as
 
 $$
+declare
+    max_try integer;
+    new_try integer;
 BEGIN
-
+    select into max_try max(attempt) from quiz_result where quiz_id = qid and user_id = uid;
+    if max_try is null then new_try := 1; else new_try := max_try + 1; end if;
+    insert into quiz_result (quiz_id, user_id, result, quiz_submit_date, attempt)
+    values (qid, uid, (select count(*)
+                       from quiz_history qh
+                                join quiz_variant qv on qh.selected_variant_id = qv.id
+                                join question q on qh.question_id = q.id
+                       where qh.attempt = try
+                         and is_correct is true
+                         and user_id = uid
+                         and q.quiz_id = qid), current_timestamp, new_try);
 end;
 $$ language plpgsql;
 
-
-
+call calculate_result('93d2eee8-4943-47fe-b088-c43f0d02ec6b', 'ac179eb9-4a40-4d3c-9022-1eb87309c055', 1);
