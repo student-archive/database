@@ -174,3 +174,7 @@ values ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
 insert into "trash"("group_id", "deleted_id", "deleted_date")
 values ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
         (select "id" from "attachment" order by random() limit 1), CURRENT_TIMESTAMP);
+
+insert into "quiz_result" ("quiz_id", "user_id", "result", "quiz_submit_date")
+values ((select "id" from quiz order by random() limit 1), (select "id" from "user" order by random() limit 1),
+        44, CURRENT_TIMESTAMP);

@@ -59,3 +59,25 @@ create trigger "notify_material_deletion()"
     on "trash"
     for each row
 execute procedure notify_material_deletion();
+
+
+create or replace function notify_motivation() returns trigger as
+$$
+begin
+    insert into "event"(event_priority_id, user_id, event_text, event_description,
+                        event_date)
+    values ((select id from event_priority where priority_name = 'low'), (select user_id
+                                                                          from "quiz_result"
+                                                                          where user_id = new.user_id limit 1),
+            'ВЫ МОЛОДЕЦ!',
+            '))0)',
+            current_timestamp);
+    return new;
+end;
+$$ language plpgsql;
+
+create trigger "notify_material_deletion()"
+    after insert
+    on "quiz_result"
+    for each row
+execute procedure notify_motivation();
