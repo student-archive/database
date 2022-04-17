@@ -186,3 +186,8 @@ values ((select "id" from "subject" where "subject_name" = 'Тестирован
 insert into "software" ("subject_id", "link", "description")
 values ((select "id" from "subject" order by random() limit 1),
         'https://torrentnote.ru/torrent-site/rutracker', 'Тест1');
+
+insert into "attachment" ("type_id", "attachment_link", "checksum", author)
+values ((select "id" from "attachment_type" order by random() limit 1),
+        'https://vk.com/s/v1/doc/I7ytkYPa88wOSnYH0DuNqjqbaYf4wTPItcodzv36n67sRkDyQ7I',
+        'E60F4D895ADAC6961E1C95560F174394238D6A01', 'test1');

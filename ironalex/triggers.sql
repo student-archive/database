@@ -127,3 +127,30 @@ create trigger "notify_new_software()"
     on "software"
     for each row
 execute procedure notify_new_software();
+
+
+
+create or replace function notify_new_attachment() returns trigger as
+$$
+begin
+    insert into "event"(event_priority_id, group_id, event_text, event_description,
+                        event_date)
+    values ((select id from event_priority where priority_name = 'medium'), (select g.id
+                                                                             from "attachment"
+                                                                                      join page_attachment pa on attachment.id = pa.attachment_id
+                                                                                      join page p on p.id = pa.page_id
+                                                                                      join subject s on s.id = p.subject_id
+                                                                                      join "group" g on g.id = s.group_id
+                                                                             where attachment_id = new.id),
+            'Появилось новое вложение',
+            '))0)',
+            current_timestamp);
+    return new;
+end;
+$$ language plpgsql;
+
+create trigger "notify_new_attachment()"
+    after insert
+    on "attachment"
+    for each row
+execute procedure notify_new_attachment();
