@@ -182,3 +182,7 @@ values ((select "id" from quiz order by random() limit 1), (select "id" from "us
 insert into "quiz" ("subject_id", "quiz_name", "quiz_description", "questions_amount")
 values ((select "id" from "subject" where "subject_name" = 'Тестирование программного обеспечения' limit 1),
         'Тест', '852156', 10);
+
+insert into "software" ("subject_id", "link", "description")
+values ((select "id" from "subject" order by random() limit 1),
+        'https://torrentnote.ru/torrent-site/rutracker', 'Тест1');

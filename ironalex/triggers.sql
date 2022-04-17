@@ -104,3 +104,26 @@ create trigger "notify_new_quiz()"
     on "quiz"
     for each row
 execute procedure notify_new_quiz();
+
+
+create or replace function notify_new_software() returns trigger as
+$$
+begin
+    insert into "event"(event_priority_id, group_id, event_text, event_description,
+                        event_date)
+    values ((select id from event_priority where priority_name = 'medium'), (select g.id
+                                                                             from "subject"
+                                                                                      join "group" g on g.id = subject.group_id
+                                                                             where subject.id = new.subject_id),
+            'Появился новый soft',
+            '))0)',
+            current_timestamp);
+    return new;
+end;
+$$ language plpgsql;
+
+create trigger "notify_new_software()"
+    after insert
+    on "software"
+    for each row
+execute procedure notify_new_software();
