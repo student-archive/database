@@ -68,7 +68,8 @@ begin
                         event_date)
     values ((select id from event_priority where priority_name = 'low'), (select user_id
                                                                           from "quiz_result"
-                                                                          where user_id = new.user_id limit 1),
+                                                                          where user_id = new.user_id
+                                                                          limit 1),
             'ВЫ МОЛОДЕЦ!',
             '))0)',
             current_timestamp);
@@ -81,3 +82,25 @@ create trigger "notify_material_deletion()"
     on "quiz_result"
     for each row
 execute procedure notify_motivation();
+
+create or replace function notify_new_quiz() returns trigger as
+$$
+begin
+    insert into "event"(event_priority_id, group_id, event_text, event_description,
+                        event_date)
+    values ((select id from event_priority where priority_name = 'medium'), (select g.id
+                                                                             from "subject"
+                                                                                      join "group" g on g.id = subject.group_id
+                                                                             where subject.id = new.subject_id),
+            'Появился новый тест',
+            '))0)',
+            current_timestamp);
+    return new;
+end;
+$$ language plpgsql;
+
+create trigger "notify_new_quiz()"
+    after insert
+    on "quiz"
+    for each row
+execute procedure notify_new_quiz();
