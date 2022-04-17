@@ -153,7 +153,36 @@ $$ language plpgsql;
 select sex_ratio(1);
 
 
+create or replace function how_much_better_am_i(uid uuid, qid uuid)
+    returns table
+            (
 
+                "percent" bigint
+            )
+as
+$$
+declare
+    my_result numeric;
+begin
+    select round((select (result * 100.0) / q.questions_amount))
+    into my_result
+    from quiz_result
+             join quiz q on quiz_result.quiz_id = q.id
+    where quiz_id = qid
+      and user_id = uid;
+
+    return query (select count(*)
+                  from (select user_id, (select (result * 100.0) / q.questions_amount as res)
+                        from "quiz_result"
+                                 join quiz q on quiz_result.quiz_id = q.id
+                        where quiz_id = qid) as q
+                  where res < my_result);
+end;
+$$ language plpgsql;
+
+select how_much_better_am_i('077f814d-ffe9-41d5-aa97-1f5f6b50c325', '5f55b595-a81b-4e5b-bfd0-1883b3196f8d');
+
+drop function how_much_better_am_i
 
 
 
