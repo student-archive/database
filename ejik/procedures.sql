@@ -5,7 +5,8 @@ begin
 
     insert into "subject" (group_id, subject_name, semester)
     values ((select "id" from "group" where "group"."id" = groupid limit 1), 'тест', 3);
-    insert into "page" (subject_id,link) values ((select "id" from "subject" where "subject"."id" = groupid limit 1),'http:/test');
+    insert into "page" (subject_id, link)
+    values ((select "id" from "subject" where "subject"."id" = groupid limit 1), 'http:/test');
     insert into "attachment" (type_id, attachment_link, author, checksum)
     values ((select "type_id" from attachment where "checksum" = 'тест' limit 1),
             (select "attachment_link" from attachment where "checksum" = 'тест' limit 1),
@@ -18,7 +19,6 @@ end ;
 
 $$ language plpgsql;
 call load_attachment_example(groupid := 'b9ffe76bbc2f4908b3fa3054ba396cf9');
-
 
 
 
@@ -45,25 +45,21 @@ $$
 begin
 
 
-
-insert into "subject" (group_id, subject_name, semester)
-values ((select "id" from "group" where "group"."id" = groupid limit 1), 'Статьи', 8);
-insert into "quiz" ("subject_id", "quiz_name", "quiz_description", "questions_amount")
-values ((select "id" from "subject" where "subject_name" = 'Статьи' limit 1), 'Статьи это хорошо',
-        'Статьи это хорошо', 1);
-insert into "question" (quiz_id, question_text, correct_answers_amount, total_answers_amount)
-values ((select "id" from "quiz" where "quiz_name" = 'Статьи это хорошо' limit 1), 'нужно писать статьи',
-        1, 2);
-insert into "quiz_variant" (question_id, quiz_variant_text, is_correct)
-values ((select "id" from "question" where "question_text" ='нужно писать статьи'  limit 1), 'Пишу',
-        true);
-insert into "quiz_variant" (question_id, quiz_variant_text, is_correct)
-values ((select "id" from "question" where "question_text" ='нужно писать статьи' limit 1), 'не Пишу',
-        false);
+    insert into "subject" (group_id, subject_name, semester)
+    values ((select "id" from "group" where "group"."id" = groupid limit 1), 'Статьи', 8);
+    insert into "quiz" ("subject_id", "quiz_name", "quiz_description", "questions_amount")
+    values ((select "id" from "subject" where "subject_name" = 'Статьи' limit 1), 'Статьи это хорошо',
+            'Статьи это хорошо', 1);
+    insert into "question" (quiz_id, question_text, correct_answers_amount, total_answers_amount)
+    values ((select "id" from "quiz" where "quiz_name" = 'Статьи это хорошо' limit 1), 'нужно писать статьи',
+            1, 2);
+    insert into "quiz_variant" (question_id, quiz_variant_text, is_correct)
+    values ((select "id" from "question" where "question_text" = 'нужно писать статьи' limit 1), 'Пишу',
+            true);
+    insert into "quiz_variant" (question_id, quiz_variant_text, is_correct)
+    values ((select "id" from "question" where "question_text" = 'нужно писать статьи' limit 1), 'не Пишу',
+            false);
 end;
-
-
-
 
 
 $$ language plpgsql;
@@ -75,7 +71,8 @@ $$
 begin
 
 
-    insert into "page" (subject_id,link) values ((select "id" from "subject" where "subject_name" = subjectname limit 1),'http:/article');
+    insert into "page" (subject_id, link)
+    values ((select "id" from "subject" where "subject_name" = subjectname limit 1), 'http:/article');
     insert into "attachment" (type_id, attachment_link, author, checksum)
     values ((select "type_id" from attachment where "checksum" = 'Статьи' limit 1),
             (select "attachment_link" from attachment where "checksum" = 'Статьи' limit 1),
@@ -85,6 +82,6 @@ begin
 end;
 
 
-$$language plpgsql;
+$$ language plpgsql;
 call load_articles_materials('Статьи')
 

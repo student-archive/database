@@ -159,3 +159,35 @@ values ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
         (select "id" from "software" order by random() limit 1), CURRENT_TIMESTAMP),
        ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
         (select "id" from "event" order by random() limit 1), CURRENT_TIMESTAMP);
+
+insert into "group" ("speciality_id", "group_name", "university_id")
+values ((select "id" from "speciality" where "speciality_name" = 'Управление системами' limit 1),
+        'Test', (select "id" from "university" where "university_name" = 'ВлГУ' limit 1));
+
+insert into "user" ("group_id", "account_id", "role_id", "sex_id", "first_name", "last_name", "avatar_link")
+values ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
+        (select "id" from "account" order by random() limit 1),
+        (select "id" from "role" where "role_name" = 'Студент' limit 1),
+        (select "id" from "sex" where "sex_name" = 'Мужской' limit 1), 'Тест', 'Тестов',
+        'https://www.google.com/url?sa=i&url=https%3A%2F%2Fzoo.dp.ua%2Fafrikanskij-karlikovyj-ezhik-osobennosti-porody-i-soderzhaniya%2F&psig=AOvVaw2Y8bZX448BRvER0nnTF3FC&ust=1649007025458000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCKDG6oP09fYCFQAAAAAdAAAAABAD');
+
+insert into "trash"("group_id", "deleted_id", "deleted_date")
+values ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
+        (select "id" from "attachment" order by random() limit 1), CURRENT_TIMESTAMP);
+
+insert into "quiz_result" ("quiz_id", "user_id", "result", "quiz_submit_date")
+values ((select "id" from quiz order by random() limit 1), (select "id" from "user" order by random() limit 1),
+        44, CURRENT_TIMESTAMP);
+
+insert into "quiz" ("subject_id", "quiz_name", "quiz_description", "questions_amount")
+values ((select "id" from "subject" where "subject_name" = 'Тестирование программного обеспечения' limit 1),
+        'Тест', '852156', 10);
+
+insert into "software" ("subject_id", "link", "description")
+values ((select "id" from "subject" order by random() limit 1),
+        'https://torrentnote.ru/torrent-site/rutracker', 'Тест1');
+
+insert into "attachment" ("type_id", "attachment_link", "checksum", author)
+values ((select "id" from "attachment_type" order by random() limit 1),
+        'https://vk.com/s/v1/doc/I7ytkYPa88wOSnYH0DuNqjqbaYf4wTPItcodzv36n67sRkDyQ7I',
+        'E60F4D895ADAC6961E1C95560F174394238D6A01', 'test1');
