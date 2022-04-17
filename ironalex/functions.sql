@@ -132,6 +132,30 @@ $$ language plpgsql;
 select search_groups_by_tutor('b7cd5c14-98ff-4a93-b36b-fdf35bfc7bd9');
 
 
+create or replace function sex_ratio(sex integer)
+    returns table
+            (
+                "m_percent" numeric
+            )
+as
+$$
+declare
+    users integer;
+    male  integer;
+begin
+    select count(*) into male from "user" where sex_id = sex;
+    select count(*) into users from "user";
+    return query (select (male * 100.0) / users);
+
+end;
+$$ language plpgsql;
+
+select sex_ratio(1);
+
+
+
+
+
 
 
 
