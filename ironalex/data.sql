@@ -159,3 +159,7 @@ values ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
         (select "id" from "software" order by random() limit 1), CURRENT_TIMESTAMP),
        ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
         (select "id" from "event" order by random() limit 1), CURRENT_TIMESTAMP);
+
+insert into "group" ("speciality_id", "group_name", "university_id")
+values ((select "id" from "speciality" where "speciality_name" = 'Управление системами' limit 1),
+        'Test', (select "id" from "university" where "university_name" = 'ВлГУ' limit 1));
