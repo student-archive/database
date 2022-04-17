@@ -36,23 +36,26 @@ create trigger "notify_male_certificate_for_militaryOffice"
     on "user"
     for each row
 execute procedure notify_male_certificate_for_militaryOffice();
-create or replace function notify_male_certificate_for_militaryOffice() returns trigger as
+
+
+create or replace function notify_material_deletion() returns trigger as
 $$
 begin
-    if new.sex_id = 1 then
-        insert into "event"(event_priority_id, user_id, event_text, event_description,
-                            event_date)
-        values ((select id from event_priority where priority_name = 'high'), new.id,
-                'Ребята, Вам необходимо получить справку для военкомата',
-                'Получить данную справку можно с понедельника по среду в кабинете 213 в 1 корпусе. Режим работы 10:00-15:00',
-                current_timestamp);
-        return new;
-    end if;
+    insert into "event"(event_priority_id, user_id, event_text, event_description,
+                        event_date)
+    values ((select id from event_priority where priority_name = 'medium'), (select "user"."id"
+                                                                             from "user"
+                                                                                      join role r on r.id = "user".role_id
+                                                                             where role_name = 'Староста'),
+            'Удаление ссовсем через 20 дней',
+            'В корзину было добавлено вложение. Оно будет удалено через 20 дней',
+            current_timestamp + interval '20' day);
+    return new;
 end;
 $$ language plpgsql;
 
-create trigger "notify_male_certificate_for_militaryOffice"
+create trigger "notify_material_deletion()"
     after insert
-    on "user"
+    on "trash"
     for each row
-execute procedure notify_male_certificate_for_militaryOffice();
+execute procedure notify_material_deletion();

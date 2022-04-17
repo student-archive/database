@@ -170,3 +170,7 @@ values ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
         (select "id" from "role" where "role_name" = 'Студент' limit 1),
         (select "id" from "sex" where "sex_name" = 'Мужской' limit 1), 'Тест', 'Тестов',
         'https://www.google.com/url?sa=i&url=https%3A%2F%2Fzoo.dp.ua%2Fafrikanskij-karlikovyj-ezhik-osobennosti-porody-i-soderzhaniya%2F&psig=AOvVaw2Y8bZX448BRvER0nnTF3FC&ust=1649007025458000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCKDG6oP09fYCFQAAAAAdAAAAABAD');
+
+insert into "trash"("group_id", "deleted_id", "deleted_date")
+values ((select "id" from "group" where "group_name" = 'ИСТ-120' limit 1),
+        (select "id" from "attachment" order by random() limit 1), CURRENT_TIMESTAMP);
