@@ -24,6 +24,7 @@ begin
             values ((select "id" from "event_priority" where "priority_name" = 'high'), "new"."id", 'Ребята, Вам необходимо получить справку для военкомата', 'Получить данную справку можно с понедельника по среду в кабинете 213 в 1 корпусе. Режим работы 10:00-15:00', current_timestamp);
         return "new";
     end if;
+    return new;
 end;
 $$ language "plpgsql";
 
