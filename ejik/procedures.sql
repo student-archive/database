@@ -23,7 +23,7 @@ call "load_attachment_example"("groupid" := 'b9ffe76bbc2f4908b3fa3054ba396cf9');
 
 
 
-create or replace procedure "createTestUser"()
+create or replace procedure "create_test_user"()
 as
 $$
 declare
@@ -40,7 +40,7 @@ end ;
 
 $$ language "plpgsql";
 
-call "createTestUser"();
+call "create_test_user"();
 
 create or replace procedure "load_articles_quiz"("groupid" uuid)
 as
