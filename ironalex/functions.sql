@@ -17,7 +17,7 @@ begin
 end;
 $$ language "plpgsql";
 
-select "randomize_quiz"('ae25fdb6-c9a1-40d1-8432-d9859df31ede');
+select * from "randomize_quiz"('ae25fdb6-c9a1-40d1-8432-d9859df31ede');
 
 create or replace function "randomize_quiz_variants"("qid" uuid)
     returns table
@@ -49,7 +49,7 @@ begin
 end;
 $$ language "plpgsql";
 
-select "randomize_quiz_variants"('1528351a-fc0f-4753-a957-baf655396ba1');
+select * from "randomize_quiz_variants"('1528351a-fc0f-4753-a957-baf655396ba1');
 
 
 create or replace function "get_academic_performance"("qid" uuid)
@@ -73,7 +73,7 @@ begin
 end ;
 $$ language "plpgsql";
 
-select "get_academic_performance"('8e7d2e8b-67b9-4aa1-afc4-c6bdcf49dfc1');
+select * from "get_academic_performance"('8e7d2e8b-67b9-4aa1-afc4-c6bdcf49dfc1');
 
 create or replace function "get_contact_information_of_group"("gid" uuid)
     returns table
@@ -95,7 +95,7 @@ begin
 end ;
 $$ language "plpgsql";
 
-select "get_contact_information_of_group"('d0a1a0a3-203e-4631-bff7-42ff99d518e2');
+select * from "get_contact_information_of_group"('d0a1a0a3-203e-4631-bff7-42ff99d518e2');
 
 
 create or replace function "search_attachments_by_tutor"("tid" uuid)
@@ -115,7 +115,7 @@ begin
 end ;
 $$ language "plpgsql";
 
-select "search_attachments_by_tutor"('2344e605-b565-4090-a1c1-b90969ef170d');
+select * from "search_attachments_by_tutor"('2344e605-b565-4090-a1c1-b90969ef170d');
 
 create or replace function "search_groups_by_tutor"("tid" uuid)
     returns table
@@ -137,7 +137,7 @@ begin
 end;
 $$ language "plpgsql";
 
-select "search_groups_by_tutor"('b7cd5c14-98ff-4a93-b36b-fdf35bfc7bd9');
+select * from "search_groups_by_tutor"('b7cd5c14-98ff-4a93-b36b-fdf35bfc7bd9');
 
 
 create or replace function "sex_ratio"("sex" integer)
@@ -158,7 +158,7 @@ begin
 end;
 $$ language "plpgsql";
 
-select "sex_ratio"(1);
+select * from "sex_ratio"(1);
 
 
 create or replace function "how_much_better_am_i"("uid" uuid, "qid" uuid)
@@ -190,7 +190,7 @@ begin
 end;
 $$ language "plpgsql";
 
-select "how_much_better_am_i"('077f814d-ffe9-41d5-aa97-1f5f6b50c325', '5f55b595-a81b-4e5b-bfd0-1883b3196f8d');
+select * from "how_much_better_am_i"('077f814d-ffe9-41d5-aa97-1f5f6b50c325', '5f55b595-a81b-4e5b-bfd0-1883b3196f8d');
 
 drop function "how_much_better_am_i"
 
