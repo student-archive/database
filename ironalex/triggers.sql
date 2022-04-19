@@ -16,7 +16,7 @@ execute procedure "load_articles_propose_test"();
 
 
 
-create or replace function "notify_male_certificate_for_militaryOffice"() returns trigger as
+create or replace function "notify_male_certificate_for_military_office"() returns trigger as
 $$
 begin
     if "new"."sex_id" = 1 then
@@ -27,11 +27,11 @@ begin
 end;
 $$ language "plpgsql";
 
-create trigger "notify_male_certificate_for_militaryOffice"
+create trigger "notify_male_certificate_for_military_office"
     after insert
     on "user"
     for each row
-execute procedure "notify_male_certificate_for_militaryOffice"();
+execute procedure "notify_male_certificate_for_military_office"();
 
 
 create or replace function "notify_material_deletion"() returns trigger as
