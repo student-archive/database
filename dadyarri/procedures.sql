@@ -1,4 +1,4 @@
-create or replace procedure "invalidateInvite"("code" text, "account" uuid)
+create or replace procedure "invalidate_invite"("code" text, "account" uuid)
     language "plpgsql"
 as
 $$
