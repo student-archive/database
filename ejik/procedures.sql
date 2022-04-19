@@ -35,7 +35,7 @@ begin
     insert into "user" ("account_id", "role_id", "sex_id", "first_name", "last_name")
         values ("aid", 'e93babcd-3306-45f6-8634-18366ae9bc8f', 9, 'test_name', 'test_last_name');
 
-end ;
+end;
 
 
 $$ language "plpgsql";
